@@ -1,13 +1,10 @@
-.task{
-    display: flex; 
-    width: 200px;
-    margin-top: 10px;
+.task {
 }
 
-.taskTitle{
-    margin-left: 10px;
+.taskTitle {
+  margin-left: 10px;
 }
 
-.close{
-    margin-left: auto;
+.close {
+  margin-left: 10px;
 }
