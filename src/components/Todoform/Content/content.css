@@ -1,5 +1,10 @@
 .content {
-  overflow-y: scroll;
-  grid-row: 2/3;
-  grid-row: 2/3;
+  grid-row: 2;
+  padding-top: 6vh;
+  padding-bottom: 6vh;
+  min-height: 1fr;
+  display: grid;
+  align-items: start;
+  align-content: start;
+  justify-content: center;
 }
