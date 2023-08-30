@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './todoform.css';
-import Task from '../Task/Task';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import Content from './Content/Content';
 
 export default function Todoform() {
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
@@ -13,12 +15,19 @@ export default function Todoform() {
 
   const [groupTasks, setGroupTasks] = useState([]);
 
+  const [isDuplicate, setIsDuplicate] = useState(false);
+
   const addTask = () => {
     if (inputTask.trim() !== '') {
-      setTasks([...tasks, { id: Math.random(new Date()), title: inputTask, isComplited: false }]);
-      setInputTask('');
-      setFoundTask([]);
-      setIsSearch(false);
+      if (tasks.find((t) => t.title === inputTask) === undefined) {
+        setTasks([...tasks, { id: Math.random(new Date()), title: inputTask, isComplited: false }]);
+        setInputTask('');
+        setFoundTask([]);
+        setIsSearch(false);
+        setIsDuplicate(false);
+      } else {
+        setIsDuplicate(true);
+      }
     }
   };
 
@@ -59,57 +68,39 @@ export default function Todoform() {
     setGroupTasks([...tasks].filter((t) => t.isComplited === true));
   }, [tasks]);
 
-  console.log('---->', foundTasks);
+  useEffect(() => {
+    setIsDuplicate(false);
+  }, [inputTask]);
+
+  const removeAllTasks = () => {
+    setTasks([]);
+  };
 
   return (
     <>
       <div className="todoform">
-        <div className="header">
-          <input
-            value={inputTask}
-            type="text"
-            onKeyUpCapture={(e) => addTaskEnter(e)}
-            placeholder="введите задачу"
-            onChange={(e) => setInputTask(e.target.value)}
-          ></input>
-          <button onClick={() => addTask()}>Записать</button>
-          <button onClick={() => findTasks()}>
-            {isSearch && inputTask.trim() !== '' ? 'закрыть поиск' : 'поиск'}
-          </button>
-          <button
-            onClick={() => removeGroupTasks()}
-            style={{ visibility: groupTasks.length > 1 ? null : 'hidden' }}
-          >
-            удалить группу элементов
-          </button>
-        </div>
-        <div className="navigate"></div>
-        <div className="content">
-          {isSearch && inputTask.trim() !== '' ? (
-            foundTasks.length === 0 ? (
-              <div>не найдено</div>
-            ) : (
-              foundTasks.map((foundTask) => (
-                <Task
-                  key={foundTask.id}
-                  task={foundTask}
-                  changeTodo={changeTodo}
-                  removeOneTask={removeOneTask}
-                />
-              ))
-            )
-          ) : (
-            tasks.map((task) => (
-              <Task
-                key={task.id}
-                task={task}
-                changeTodo={changeTodo}
-                removeOneTask={removeOneTask}
-              />
-            ))
-          )}
-        </div>
-        <div className="footer">тут футер</div>
+        <Header
+          tasks={tasks}
+          inputTask={inputTask}
+          isSearch={isSearch}
+          groupTasks={groupTasks}
+          addTaskEnter={addTaskEnter}
+          setInputTask={setInputTask}
+          addTask={addTask}
+          findTasks={findTasks}
+          removeGroupTasks={removeGroupTasks}
+          removeAllTasks={removeAllTasks}
+          isDuplicate={isDuplicate}
+        />
+        <Content
+          tasks={tasks}
+          isSearch={isSearch}
+          inputTask={inputTask}
+          foundTasks={foundTasks}
+          changeTodo={changeTodo}
+          removeOneTask={removeOneTask}
+        />
+        <Footer />
       </div>
     </>
   );
