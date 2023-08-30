@@ -1,16 +1,7 @@
 .todoform {
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
+  /* grid-template-rows: 1fr 1fr auto; */
   margin: 0;
 
   background-color: #eeeeba;
-}
-
-.navigate {
-  grid-row-start: 2;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  background-color: #44324231;
 }

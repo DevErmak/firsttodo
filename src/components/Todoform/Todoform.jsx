@@ -76,6 +76,30 @@ export default function Todoform() {
     setTasks([]);
   };
 
+  const makeDidCompletedAllTasks = () => {
+    setTasks(
+      tasks.map((t) => {
+        return {
+          id: t.id,
+          title: t.title,
+          isComplited: false,
+        };
+      }),
+    );
+  };
+
+  const noMakeDidCompletedAllTasks = () => {
+    setTasks(
+      tasks.map((t) => {
+        return {
+          id: t.id,
+          title: t.title,
+          isComplited: true,
+        };
+      }),
+    );
+  };
+
   return (
     <>
       <div className="todoform">
@@ -91,6 +115,8 @@ export default function Todoform() {
           removeGroupTasks={removeGroupTasks}
           removeAllTasks={removeAllTasks}
           isDuplicate={isDuplicate}
+          makeDidCompletedAllTasks={makeDidCompletedAllTasks}
+          noMakeDidCompletedAllTasks={noMakeDidCompletedAllTasks}
         />
         <Content
           tasks={tasks}

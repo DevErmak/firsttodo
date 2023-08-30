@@ -12,6 +12,8 @@ export default function Header({
   removeGroupTasks,
   removeAllTasks,
   isDuplicate,
+  makeDidCompletedAllTasks,
+  noMakeDidCompletedAllTasks,
 }) {
   return (
     <div className="header">
@@ -37,9 +39,17 @@ export default function Header({
         {isSearch && inputTask.trim() !== '' ? 'закрыть поиск' : 'поиск'}
       </button>
       {tasks.length > 1 ? (
-        <button className="btn-delete-all" onClick={() => removeAllTasks()}>
-          удалить все задачи
-        </button>
+        <>
+          <button className="btn-delete-all" onClick={() => removeAllTasks()}>
+            удалить все задачи
+          </button>
+          <button className="btn-iscomplited-all" onClick={() => makeDidCompletedAllTasks()}>
+            снять со всех выбор
+          </button>
+          <button className="btn-noiscomplited-all" onClick={() => noMakeDidCompletedAllTasks()}>
+            отметить все
+          </button>
+        </>
       ) : null}
       {groupTasks.length > 1 ? (
         <button className="btn-delete-grope" onClick={() => removeGroupTasks()}>
