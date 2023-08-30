@@ -1,8 +1,5 @@
 .content {
   overflow-y: scroll;
-  grid-row-start: 2;
-  grid-row-end: 2;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  background-color: #ec55dbce;
+  grid-row: 2/3;
+  grid-row: 2/3;
 }

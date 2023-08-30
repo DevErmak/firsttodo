@@ -16,7 +16,7 @@ export default function Header({
   return (
     <div className="header">
       {isDuplicate && (
-        <label className="task-input-label" htmlFor="error-input-task">
+        <label className="label-input-task" htmlFor="error-input-task">
           такая задача уже есть
         </label>
       )}
@@ -30,15 +30,21 @@ export default function Header({
         onChange={(e) => setInputTask(e.target.value)}
       ></input>
 
-      <button onClick={() => addTask()}>Записать</button>
-      <button onClick={() => findTasks()}>
+      <button className="btn-addtask" onClick={() => addTask()}>
+        Записать
+      </button>
+      <button className="btn-findtask" onClick={() => findTasks()}>
         {isSearch && inputTask.trim() !== '' ? 'закрыть поиск' : 'поиск'}
       </button>
       {tasks.length > 1 ? (
-        <button onClick={() => removeAllTasks()}>удалить все задачи</button>
+        <button className="btn-delete-all" onClick={() => removeAllTasks()}>
+          удалить все задачи
+        </button>
       ) : null}
       {groupTasks.length > 1 ? (
-        <button onClick={() => removeGroupTasks()}> удалить группу элементов </button>
+        <button className="btn-delete-grope" onClick={() => removeGroupTasks()}>
+          удалить группу элементов
+        </button>
       ) : null}
     </div>
   );
