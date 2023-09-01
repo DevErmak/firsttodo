@@ -3,7 +3,12 @@ import './task.css';
 export default function Task({ task, changeTodo, removeOneTask }) {
   return (
     <div className="task">
-      <input id={task.id} type="checkbox" onChange={() => changeTodo(task.id)} />
+      <input
+        id={task.id}
+        type="checkbox"
+        checked={task.isComplited}
+        onChange={() => changeTodo(task.id)}
+      />
       <label
         className="taskTitle"
         htmlFor={task.id}
