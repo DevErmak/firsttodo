@@ -4,7 +4,7 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import Content from './Content/Content';
 
-export default function Todoform() {
+export default function TodoForm() {
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
 
   const [inputTask, setInputTask] = useState('');
@@ -101,33 +101,31 @@ export default function Todoform() {
   };
 
   return (
-    <>
-      <div className="todoform">
-        <Header
-          tasks={tasks}
-          inputTask={inputTask}
-          isSearch={isSearch}
-          groupTasks={groupTasks}
-          addTaskEnter={addTaskEnter}
-          setInputTask={setInputTask}
-          addTask={addTask}
-          findTasks={findTasks}
-          removeGroupTasks={removeGroupTasks}
-          removeAllTasks={removeAllTasks}
-          isDuplicate={isDuplicate}
-          makeDidCompletedAllTasks={makeDidCompletedAllTasks}
-          noMakeDidCompletedAllTasks={noMakeDidCompletedAllTasks}
-        />
-        <Content
-          tasks={tasks}
-          isSearch={isSearch}
-          inputTask={inputTask}
-          foundTasks={foundTasks}
-          changeTodo={changeTodo}
-          removeOneTask={removeOneTask}
-        />
-        <Footer />
-      </div>
-    </>
+    <div className="todoform">
+      <Header
+        tasks={tasks}
+        inputTask={inputTask}
+        isSearch={isSearch}
+        groupTasks={groupTasks}
+        addTaskEnter={addTaskEnter}
+        setInputTask={setInputTask}
+        addTask={addTask}
+        findTasks={findTasks}
+        removeGroupTasks={removeGroupTasks}
+        removeAllTasks={removeAllTasks}
+        isDuplicate={isDuplicate}
+        makeDidCompletedAllTasks={makeDidCompletedAllTasks}
+        noMakeDidCompletedAllTasks={noMakeDidCompletedAllTasks}
+      />
+      <Content
+        tasks={tasks}
+        isSearch={isSearch}
+        inputTask={inputTask}
+        foundTasks={foundTasks}
+        changeTodo={changeTodo}
+        removeOneTask={removeOneTask}
+      />
+      <Footer />
+    </div>
   );
 }

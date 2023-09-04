@@ -1,5 +1,5 @@
-import Weatherform from '../components/Weatherform/Weatherform';
+import WeatherForm from '../components/WeatherForm/WeatherForm';
 
 export default function Weather() {
-  return <Weatherform />;
+  return <WeatherForm />;
 }

@@ -1,11 +1,11 @@
-import Todoform from '../components/Todoform/Todoform';
-import Weather from '../components/Weatherform/WeatherPresent';
+import TodoForm from '../components/TodoForm/TodoForm';
+import Weather from '../components/WeatherForm/WeatherPresent';
 
 export default function Todo() {
   return (
     <>
-      <Todoform />
-      {/* <Weather /> */}
+      <TodoForm />
+      <Weather />
     </>
   );
 }
