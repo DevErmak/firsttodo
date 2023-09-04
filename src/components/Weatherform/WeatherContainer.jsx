@@ -17,10 +17,14 @@ export default function WeatherContainer() {
       console.log('--------->response', response);
       const data = await response.data;
       console.log('--------->data', data);
-      setGeo({
-        lat: data[0].lat,
-        lon: data[0].lon,
-      });
+      if (data.length === 0) {
+        setGeo({});
+      } else {
+        setGeo({
+          lat: data[0].lat,
+          lon: data[0].lon,
+        });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -49,7 +53,9 @@ export default function WeatherContainer() {
   }, [geo]);
 
   if (weather.main !== undefined) {
-    console.log('--------->temp', weather.main.temp);
-    return <WeatherPresent weather={weather.main} />;
+    console.log('--------->temp', weather);
+    return <WeatherPresent weather={weather} city={city} />;
+  } else {
+    return <WeatherPresent />;
   }
 }

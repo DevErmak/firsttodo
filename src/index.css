@@ -1,8 +1,8 @@
 body {
+  display: grid;
+  justify-items: stretch;
+  align-items: stretch;
   padding: 0;
   background-color: #eeeeba;
-  font-family: sans-serif;
   margin: 0;
-  --main-spacing: 15px 5px 10px 5px;
-  --header-footer-spacing: 10px 5px;
 }

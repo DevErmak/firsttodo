@@ -1,10 +1,12 @@
-import React from 'react';
+import './weather.css';
 import WeatherContainer from './WeatherContainer';
 
 export default function Weatherform() {
   return (
     <>
-      <WeatherContainer />
+      <div className="weatherform">
+        <WeatherContainer />
+      </div>
     </>
   );
 }

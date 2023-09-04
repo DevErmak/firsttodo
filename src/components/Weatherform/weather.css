@@ -1,0 +1,88 @@
+.weatherform {
+  display: grid;
+  justify-content: stretch;
+  align-content: stretch;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #024c68;
+  row-gap: 0px;
+  grid-template-rows: 30px, 30px, 10px;
+  justify-items: center;
+  align-items: center;
+}
+.temperatura {
+  color: #62b1d0;
+  display: grid;
+  grid-row: 2;
+  justify-items: stretch;
+  align-items: center;
+  white-space: nowrap;
+  max-width: 100em;
+  max-height: 100em;
+  background-color: bisque;
+  grid-template-areas:
+    'C K'
+    'C F';
+}
+.temp-k {
+  grid-area: K;
+}
+.temp-c {
+  grid-area: C;
+  font-size: 2em;
+}
+.temp-f {
+  grid-area: F;
+}
+.not-found-city {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(94, 45, 45);
+  background-color: rgb(216, 103, 75);
+}
+.name-city {
+  font-size: 2em;
+  color: #62b1d0;
+  background-color: #0776a0;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  grid-row: 1;
+  max-width: 100em;
+  max-height: 100em;
+  padding: 5px;
+}
+.name-city:hover {
+  background-color: #2f8fb3;
+  color: #1b4453;
+}
+
+@media screen and (max-width: 480px) {
+  .name-city {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+.read-or-hide-details {
+  cursor: pointer;
+  color: #62b1d0;
+  max-width: 100em;
+  max-height: 100em;
+  grid-row: 3;
+  transition: color 0.3s;
+}
+.read-or-hide-details:hover {
+  color: #26a1aa;
+}
+.weather-details {
+  cursor: pointer;
+  color: #62b1d0;
+  max-width: 100em;
+  max-height: 100em;
+  grid-row: 3;
+  transition: color 0.3s;
+}
+.weather-details :hover {
+  color: #26a1aa;
+}
