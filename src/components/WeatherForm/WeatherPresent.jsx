@@ -1,6 +1,6 @@
 import './weather.css';
 import WeatherDetails from './WeatherDetails';
-import Temperatura from './Temperatura';
+import Temperature from './Temperature';
 import DateWeather from './DateWeather';
 export default function Weather({ weather, city }) {
   console.log('--------->dataweathercity', city);
@@ -11,7 +11,7 @@ export default function Weather({ weather, city }) {
     <>
       <div className="name-city"> {city} </div>
       <div>
-        <Temperatura temp={weather.main.temp} />
+        <Temperature temp={weather.main.temp} />
         <DateWeather weather={weather} />
       </div>
       <WeatherDetails weather={weather} />

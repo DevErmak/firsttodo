@@ -6,13 +6,13 @@ export default function Task({ task, changeTodo, removeOneTask }) {
       <input
         id={task.id}
         type="checkbox"
-        checked={task.isComplited}
+        checked={task.isCompleted}
         onChange={() => changeTodo(task.id)}
       />
       <label
         className="taskTitle"
         htmlFor={task.id}
-        style={{ textDecoration: task.isComplited ? 'line-through' : null }}
+        style={{ textDecoration: task.isCompleted ? 'line-through' : null }}
       >
         {task.title}
       </label>

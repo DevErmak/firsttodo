@@ -12,7 +12,7 @@ export default function Content({
   const isRenderSearch = () => {
     return isSearch && inputTask.trim() !== '';
   };
-  const drowTask = (stateElement) => {
+  const drawTask = (stateElement) => {
     return stateElement.map((Element) => (
       <Task key={Element.id} task={Element} changeTodo={changeTodo} removeOneTask={removeOneTask} />
     ));
@@ -23,10 +23,10 @@ export default function Content({
         foundTasks.length === 0 ? (
           <div className="not-found">не найдено</div>
         ) : (
-          drowTask(foundTasks)
+          drawTask(foundTasks)
         )
       ) : (
-        drowTask(tasks)
+        drawTask(tasks)
       )}
     </div>
   );

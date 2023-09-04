@@ -62,7 +62,7 @@
   font-size: 15px;
   padding: 5px 10px;
 }
-.btn-iscomplited-all {
+.btn-iscompleted-all {
   color: #9b9b3c;
   grid-row: 1/3;
   background-color: #512967;
@@ -71,7 +71,7 @@
   font-size: 15px;
   padding: 5px 10px;
 }
-.btn-noiscomplited-all {
+.btn-noiscompleted-all {
   color: #9b9b3c;
   grid-row: 1/3;
   background-color: #512967;

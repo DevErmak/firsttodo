@@ -43,10 +43,10 @@ export default function Header({
           <button className="btn-delete-all" onClick={() => removeAllTasks()}>
             удалить все задачи
           </button>
-          <button className="btn-iscomplited-all" onClick={() => makeDidCompletedAllTasks()}>
+          <button className="btn-iscompleted-all" onClick={() => makeDidCompletedAllTasks()}>
             снять со всех выбор
           </button>
-          <button className="btn-noiscomplited-all" onClick={() => noMakeDidCompletedAllTasks()}>
+          <button className="btn-noiscompleted-all" onClick={() => noMakeDidCompletedAllTasks()}>
             отметить все
           </button>
         </>
