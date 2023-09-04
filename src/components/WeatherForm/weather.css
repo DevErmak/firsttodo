@@ -10,6 +10,12 @@
   justify-items: center;
   align-items: center;
 }
+temperature-date {
+  display: grid;
+  grid-template-areas:
+    'C K'
+    'C F';
+}
 .temperature {
   color: #62b1d0;
   display: grid;
@@ -20,20 +26,8 @@
   max-width: 100em;
   max-height: 100em;
   background-color: bisque;
-  grid-template-areas:
-    'C K'
-    'C F';
 }
-.temp-k {
-  grid-area: K;
-}
-.temp-c {
-  grid-area: C;
-  font-size: 2em;
-}
-.temp-f {
-  grid-area: F;
-}
+
 .not-found-city {
   display: flex;
   justify-content: center;
@@ -42,7 +36,6 @@
   background-color: rgb(216, 103, 75);
 }
 .name-city {
-  font-size: 2em;
   color: #62b1d0;
   background-color: #0776a0;
   border-radius: 10px;
