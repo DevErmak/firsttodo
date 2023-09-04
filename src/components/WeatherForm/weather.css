@@ -6,7 +6,7 @@
   min-height: 100vh;
   background-color: #024c68;
   row-gap: 0px;
-  grid-template-rows: 30px, 30px, 10px;
+  grid-template-rows: 200px, auto, 100px;
   justify-items: center;
   align-items: center;
 }

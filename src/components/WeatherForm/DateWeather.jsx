@@ -1,6 +1,18 @@
 export default function DateWeather({ weather }) {
-  const timestamp = weather.dt * 1000;
+  const currentDate = new Date();
+  const dateUTC = new Date(
+    currentDate.getUTCFullYear(),
+    currentDate.getUTCMonth(),
+    currentDate.getUTCDay(),
+    currentDate.getUTCHours(),
+    currentDate.getUTCMinutes(),
+    currentDate.getUTCSeconds(),
+    currentDate.getUTCMilliseconds(),
+  );
+
+  const timestamp = dateUTC.getTime() + weather.timezone * 1000;
   const date = new Date(timestamp);
+  console.log('--------->data.get', date.getHours);
 
   const daysOfWeek = [
     'Воскресенье',

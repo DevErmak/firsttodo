@@ -15,7 +15,10 @@ export default function WeatherContainer() {
   }, []);
 
   useEffect(() => {
-    if (geo.lat && geo.lon) getWeather(geo.lat, geo.lon, setWeather);
+    if (geo.lat && geo.lon) {
+      console.log('--------->geo.lat, geo.lon', geo.lat, geo.lon);
+      getWeather(geo.lat, geo.lon, setWeather);
+    }
   }, [geo]);
 
   if (weather.main !== undefined) {
