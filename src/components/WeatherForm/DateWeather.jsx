@@ -1,18 +1,21 @@
-export default function DateWeather({ weather }) {
-  const currentDate = new Date();
-  const dateUTC = new Date(
-    currentDate.getUTCFullYear(),
-    currentDate.getUTCMonth(),
-    currentDate.getUTCDay(),
-    currentDate.getUTCHours(),
-    currentDate.getUTCMinutes(),
-    currentDate.getUTCSeconds(),
-    currentDate.getUTCMilliseconds(),
-  );
+import { useEffect, useRef } from 'react';
 
-  const timestamp = dateUTC.getTime() + weather.timezone * 1000;
-  const date = new Date(timestamp);
-  console.log('--------->data.get', date.getHours);
+export default function DateWeather({ weathers, setIndex, index, timezone }) {
+  const GetDateRelativeCurrentСity = (timeDtSec) => {
+    const currentDate = new Date(timeDtSec * 1000);
+    const dateUTC = new Date(
+      currentDate.getUTCFullYear(),
+      currentDate.getUTCMonth(),
+      currentDate.getUTCDay(),
+      currentDate.getUTCHours(),
+      currentDate.getUTCMinutes(),
+      currentDate.getUTCSeconds(),
+      currentDate.getUTCMilliseconds(),
+    );
+    return dateUTC.getTime() + timezone * 1000;
+  };
+  console.log('--------->weathers[index].dt', weathers[index].dt);
+  const date = new Date(weathers[index].dt * 1000);
 
   const daysOfWeek = [
     'Воскресенье',
@@ -28,9 +31,55 @@ export default function DateWeather({ weather }) {
   const minutes = date.getMinutes().toString().padStart(2, '0');
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const year = date.getFullYear();
+
+  const scrollContainerRef = useRef(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    const handleScroll = (event) => {
+      if (event.deltaY > 0) {
+        let i = 1;
+        while (index + i < weathers.length - 1) {
+          const date = new Date(weathers[index + i].dt * 1000);
+          if (date.getHours() === 0) {
+            setIndex(index + i);
+            break;
+          } else {
+            i++;
+          }
+        }
+      } else if (event.deltaY < 0) {
+        let i = 1;
+        let isMoved = false;
+        while (index - i > 0) {
+          const date = new Date(weathers[index - i].dt * 1000);
+          if (date.getHours() === 0) {
+            setIndex(index - i);
+            isMoved = true;
+            break;
+          } else {
+            i++;
+          }
+        }
+        if (isMoved) {
+        } else {
+          setIndex(0);
+        }
+      }
+    };
+
+    scrollContainer.addEventListener('wheel', handleScroll);
+
+    return () => {
+      scrollContainer.removeEventListener('wheel', handleScroll);
+    };
+  }, [index, weathers.length]);
+
   return (
     <div className="date">
-      <div className="date-day-of-week">{dayOfWeek}</div>
+      <div ref={scrollContainerRef} className="date-day-of-week">
+        {dayOfWeek}
+      </div>
       <div className="date-time">
         {hours}:{minutes}
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function WeatherDetails({ weather, hideClick }) {
+export default function WeatherDetails({ weather }) {
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);

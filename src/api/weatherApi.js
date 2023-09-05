@@ -35,7 +35,7 @@ export async function getWeather(lat, lon, setWeather) {
   try {
     const response = await instance.get(`data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=40`);
     console.log('--------->responswethere', response);
-    const data = await response.data.list;
+    const data = await response.data;
     console.log('--------->dataweather', data);
     setWeather(data);
   } catch (error) {

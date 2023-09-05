@@ -22,11 +22,13 @@ export default function WeatherContainer() {
   }, [geo]);
 
   console.log('--------->weather', weather);
-
-  if (weather[0] !== undefined) {
-    console.log('--------->temp', weather[0].main);
-    return <WeatherPresent weather={weather[0]} city={city} />;
-  } else {
-    // return <WeatherPresent />;
+  if (Object.keys(weather).length > 0) {
+    console.log('--------->weathertemp', weather);
+    return <WeatherPresent weathers={weather} city={city} />;
   }
+  //
+  //
+  // } else {
+  //   return <WeatherPresent />;
+  // }
 }
