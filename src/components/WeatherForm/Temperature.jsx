@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import './weather.css';
 
 export default function Temperature({ weathers, setIndex, index }) {
   const scrollContainerRef = useRef(null);

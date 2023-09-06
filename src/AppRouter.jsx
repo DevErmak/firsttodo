@@ -5,7 +5,7 @@ import { WeatherContext } from './context/WeatherContext';
 import { useState } from 'react';
 
 const AppRouter = () => {
-  const [weather, setWeather] = useState([]);
+  const [weather, setWeather] = useState({});
   return (
     <WeatherContext.Provider value={{ weather, setWeather }}>
       <BrowserRouter>

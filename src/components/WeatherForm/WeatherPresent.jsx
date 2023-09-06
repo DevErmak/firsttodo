@@ -3,19 +3,25 @@ import WeatherDetails from './WeatherDetails';
 import Temperature from './Temperature';
 import DateWeather from './DateWeather';
 import { useState } from 'react';
+import City from './City';
 
-export default function Weather({ weathers, city }) {
-  console.log('---------> in Weatherpresent weather', weathers.list[0].main.temp);
+export default function Weather({ weathers, city, setCity, useDebounce }) {
+  // console.log('---------> in Weatherpresent weather', weathers.list[0].main.temp);
   const [index, setIndex] = useState(0);
   console.log('---------> in Weatherpresent weather', index);
 
-  console.log('--------->dataweathercity', city);
-  if (city === undefined) {
-    return <div className="not-found-city">Город не найден</div>;
+  console.log('--------->dataweathercityinpresent', city);
+  if (Object.keys(weathers).length < 1) {
+    return (
+      <>
+        <City city={city} useDebounce={useDebounce} setCity={setCity} />
+        <div className="not-found-city">Город не найден</div>
+      </>
+    );
   }
   return (
     <>
-      <div className="name-city"> {city} </div>
+      <City city={city} useDebounce={useDebounce} setCity={setCity} />
       <div className="temperature-date">
         <Temperature weathers={weathers.list} index={index} setIndex={setIndex} />
         <DateWeather
@@ -24,8 +30,9 @@ export default function Weather({ weathers, city }) {
           setIndex={setIndex}
           timezone={weathers.city.timezone}
         />
+        {console.log('--------->weathers.list[index]', weathers.list[index])}
       </div>
-      {/* <WeatherDetails weather={weather} /> */}
+      <WeatherDetails weather={weathers.list[index]} />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './weather.css';
 
 export default function WeatherDetails({ weather }) {
   const [isReadMore, setIsReadMore] = useState(true);
@@ -7,7 +8,7 @@ export default function WeatherDetails({ weather }) {
   };
   if (isReadMore) {
     return (
-      <div className="read-or-hide-details" onClick={toggleReadMore}>
+      <div className="weather-details" onClick={toggleReadMore}>
         ...подробнее
       </div>
     );

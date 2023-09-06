@@ -1,16 +1,40 @@
 .weatherform {
   display: grid;
-  justify-content: stretch;
-  align-content: stretch;
   min-width: 100vw;
   min-height: 100vh;
   background-color: #024c68;
   row-gap: 0px;
-  grid-template-rows: 200px, auto, 100px;
-  justify-items: center;
-  align-items: center;
+  grid-template-areas:
+    'City'
+    'temp-data'
+    'details';
+}
+
+.city {
+  grid-area: City;
+  color: #62b1d0;
+  padding-left: 5em;
+  padding-right: 5em;
+  padding-top: 50em;
+}
+.name-city {
+  color: #62b1d0;
+  background-color: #0776a0;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  grid-row: 1;
+  max-width: 10em;
+  max-height: 10em;
+  padding-left: 5em;
+  padding-right: 5em;
+  align-items: end;
+}
+.name-city:hover {
+  background-color: #2f8fb3;
+  color: #1b4453;
 }
 temperature-date {
+  grid-area: temp-data;
   display: grid;
   grid-template-areas:
     'C K'
@@ -35,20 +59,6 @@ temperature-date {
   color: rgb(94, 45, 45);
   background-color: rgb(216, 103, 75);
 }
-.name-city {
-  color: #62b1d0;
-  background-color: #0776a0;
-  border-radius: 10px;
-  transition: background-color 0.3s;
-  grid-row: 1;
-  max-width: 100em;
-  max-height: 100em;
-  padding: 5px;
-}
-.name-city:hover {
-  background-color: #2f8fb3;
-  color: #1b4453;
-}
 
 @media screen and (max-width: 480px) {
   .name-city {
@@ -69,13 +79,15 @@ temperature-date {
   color: #26a1aa;
 }
 .weather-details {
+  grid-area: details;
   cursor: pointer;
   color: #62b1d0;
-  max-width: 100em;
-  max-height: 100em;
-  grid-row: 3;
   transition: color 0.3s;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row: 3;
+  gap: 10px;
 }
-.weather-details :hover {
+.weather-details:hover > div {
   color: #26a1aa;
 }

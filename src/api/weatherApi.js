@@ -6,18 +6,25 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
+    console.log('inaxiosresponseconfig', config);
     config.url = config.url + '&appid=' + process.env.REACT_APP_WEATHER_API_KEY;
     return config;
   },
   (error) => Promise.reject(error),
 );
-
-export async function getGeo(nameCity, setGeo) {
+axios.interceptors.response.use(
+  async (response) => {
+    console.log('inaxiosresponse', response);
+    return response;
+  },
+  (error) => Promise.reject(error),
+);
+export async function getGeo(nameCity, setGeo, setCity) {
   try {
     const response = await instance.get(`/geo/1.0/direct?q=${nameCity}&limit=5`);
     console.log('--------->response', response);
     const data = await response.data;
-    console.log('--------->data', data);
+    console.log('--->ingeodata', data);
     if (data.length === 0) {
       setGeo({});
     } else {
@@ -27,6 +34,8 @@ export async function getGeo(nameCity, setGeo) {
       });
     }
   } catch (error) {
+    setCity(undefined);
+    console.log('in error axisos nameCity', nameCity);
     console.error(error);
   }
 }

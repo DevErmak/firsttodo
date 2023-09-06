@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import './weather.css';
 
 export default function DateWeather({ weathers, setIndex, index, timezone }) {
   const GetDateRelativeCurrentСity = (timeDtSec) => {
