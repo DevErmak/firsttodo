@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './header.css';
 
 export default function Header({
@@ -56,6 +57,9 @@ export default function Header({
           удалить группу элементов
         </button>
       ) : null}
+      <Link to="/">
+        <button className="btn-addtask">Домашняя страница</button>
+      </Link>
     </div>
   );
 }

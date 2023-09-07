@@ -3,6 +3,7 @@ import Todo from './pages/Todo';
 import Weather from './pages/Weather';
 import { WeatherContext } from './context/WeatherContext';
 import { useState } from 'react';
+import Home from './pages/Home';
 
 const AppRouter = () => {
   const [weather, setWeather] = useState({});
@@ -10,6 +11,7 @@ const AppRouter = () => {
     <WeatherContext.Provider value={{ weather, setWeather }}>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="todo" element={<Todo />} />
           <Route path="weather" element={<Weather />} />
         </Routes>

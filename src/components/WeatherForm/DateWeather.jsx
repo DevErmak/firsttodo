@@ -69,10 +69,10 @@ export default function DateWeather({ weathers, setIndex, index, timezone }) {
       }
     };
 
-    scrollContainer.addEventListener('wheel', handleScroll);
+    scrollContainer.addEventListener('scroll', handleScroll);
 
     return () => {
-      scrollContainer.removeEventListener('wheel', handleScroll);
+      scrollContainer.removeEventListener('scroll', handleScroll);
     };
   }, [index, weathers.length]);
 
