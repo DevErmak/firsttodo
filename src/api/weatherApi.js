@@ -12,33 +12,56 @@ instance.interceptors.request.use(
   },
   (error) => Promise.reject(error),
 );
-axios.interceptors.response.use(
-  async (response) => {
-    console.log('inaxiosresponse', response);
-    return response;
-  },
-  (error) => Promise.reject(error),
-);
-export async function getGeo(nameCity, setGeo, setCity) {
+
+export async function getDataCity(inputNameCity, setDataCity, setOptionsCity) {
   try {
-    const response = await instance.get(`/geo/1.0/direct?q=${nameCity}&limit=5`);
-    console.log('--------->response', response);
+    const response = await instance.get(`/geo/1.0/direct?q=${inputNameCity}&limit=5`);
+    console.log('--------->responsedataCity', response);
     const data = await response.data;
-    console.log('--->ingeodata', data);
-    if (data.length === 0) {
-      setGeo({});
-    } else {
-      setGeo({
-        lat: data[0].lat,
-        lon: data[0].lon,
-      });
+    console.log('--->dataindataCity', data);
+    if (Object.keys(data).length > 0) {
+      setDataCity(data);
+      return data.map((item, i) => ({
+        value: i,
+        label: item.country,
+      }));
     }
+    // if (Object.keys(data).length > 0) {
+    //   console.log('--->inIfdataindataCity', data);
+    //   const options = data.map((item, i) => ({
+    //     value: i,
+    //     label: item.country,
+    //   }));
+
+    //
+    //   setOptionsCity(options);
+    // } else {
+    //   setDataCity([]);
+    //   setOptionsCity([]);
+    // }
   } catch (error) {
-    setCity(undefined);
-    console.log('in error axisos nameCity', nameCity);
     console.error(error);
   }
 }
+
+// export async function getGeo(nameCity, setGeo) {
+//   try {
+//     const response = await instance.get(`/geo/1.0/direct?q=${nameCity}&limit=5`);
+//     console.log('--------->response', response);
+//     const data = await response.data;
+//     console.log('--->ingeodata', data);
+//     if (data.length === 0) {
+//       setGeo({});
+//     } else {
+//       setGeo({
+//         lat: data[0].lat,
+//         lon: data[0].lon,
+//       });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 export async function getWeather(lat, lon, setWeather) {
   try {

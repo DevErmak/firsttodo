@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import './weather.css';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel, Pagination } from 'swiper/modules';
+
 export default function Temperature({ weathers, setIndex, index }) {
   const scrollContainerRef = useRef(null);
 
@@ -27,29 +30,52 @@ export default function Temperature({ weathers, setIndex, index }) {
     };
     const scrollContainer = scrollContainerRef.current;
 
-    scrollContainer.addEventListener('scrollTop', handleScroll);
+    scrollContainer.addEventListener('scroll', handleScroll);
 
     return () => {
-      scrollContainer.removeEventListener('scrollTop', handleScroll);
+      scrollContainer.removeEventListener('scroll', handleScroll);
     };
   }, [index, weathers.length]);
 
   return (
-    <div className="temperature">
-      <div
-        ref={scrollContainerRef}
-        style={{ width: '300px', overflowX: 'scroll', whiteSpace: 'nowrap' }}
+    <>
+      <Swiper
+        direction={'vertical'}
+        slidesPerView={1}
+        spaceBetween={30}
+        mousewheel={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Mousewheel, Pagination]}
+        className="mySwiper"
       >
-        <div style={{ display: 'inline-block', width: '500px' }}>
-          Содержимое элемента div с горизонтальной прокруткой
+        <SwiperSlide>Slide 1</SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide>Slide 4</SwiperSlide>
+        <SwiperSlide>Slide 5</SwiperSlide>
+        <SwiperSlide>Slide 6</SwiperSlide>
+        <SwiperSlide>Slide 7</SwiperSlide>
+        <SwiperSlide>Slide 8</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+      </Swiper>
+      {/* <div className="temperature">
+        <div
+          ref={scrollContainerRef}
+          style={{ width: '300px', overflowX: 'scroll', whiteSpace: 'nowrap' }}
+        >
+          <div style={{ display: 'inline-block', width: '500px' }}>
+            Содержимое элемента div с горизонтальной прокруткой
+          </div>
         </div>
-      </div>
-      <div className="temp-c" ref={scrollContainerRef}>
-        {(weathers[index].main.temp - 273.15).toFixed(2)}
-        °Crhjbfghjkerbvhkgygatvygvrereffffffffffffffffffffffffffffffffffffff
-        {(weathers[index].main.temp - 273.15).toFixed(2)}
-        ffffffffffffffffffffffffgggggggggggggggggggfggggggggggggggggggggggggggggggggggggggggggggggggffffffffffffffffffffggggggggggggggggggffgfgffffffffffffffffffffffffffffffffffffggggggggggggggggggggggggggggggehyrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrhgerfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffggggggggggggggggfffffffffffffffggggggggggggggggggggggehrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgherfffffffffffffffffffffffffffffffffffhqfejurryueqgfh
-      </div>
-    </div>
+        <div className="temp-c" ref={scrollContainerRef}>
+          {(weathers[index].main.temp - 273.15).toFixed(2)}
+          °Crhjbfghjkerbvhkgygatvygvrereffffffffffffffffffffffffffffffffffffff
+          {(weathers[index].main.temp - 273.15).toFixed(2)}
+          ffffffffffffffffffffffffgggggggggggggggggggfggggggggggggggggggggggggggggggggggggggggggggggggffffffffffffffffffffggggggggggggggggggffgfgffffffffffffffffffffffffffffffffffffggggggggggggggggggggggggggggggehyrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrhgerfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffggggggggggggggggfffffffffffffffggggggggggggggggggggggehrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgherfffffffffffffffffffffffffffffffffffhqfejurryueqgfh
+        </div>
+      </div> */}
+    </>
   );
 }

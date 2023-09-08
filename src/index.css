@@ -1,7 +1,4 @@
 body {
-  display: grid;
-  justify-items: stretch;
-  align-items: stretch;
   padding: 0;
   background-color: #eeeeba;
   margin: 0;

@@ -3,8 +3,10 @@ import WeatherContainer from './WeatherContainer';
 
 export default function WeatherForm() {
   return (
-    <div className="weatherform">
-      <WeatherContainer />
-    </div>
+    <>
+      <div className="weatherform">
+        <WeatherContainer />
+      </div>
+    </>
   );
 }

@@ -4,8 +4,8 @@ import { WeatherContext } from '../../context/WeatherContext';
 import { getGeo, getWeather } from '../../api/weatherApi';
 
 export default function WeatherContainer() {
-  const [city, setCity] = useState();
-  console.log('--------->city', city);
+  // const [city, setCity] = useState('');
+  // console.log('--------->city', city);
 
   const useDebounce = (value, delay) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
@@ -27,9 +27,9 @@ export default function WeatherContainer() {
 
   const [geo, setGeo] = useState({});
 
-  useEffect(() => {
-    getGeo(city, setGeo, setCity);
-  }, [city]);
+  // useEffect(() => {
+  //   getGeo(city, setGeo, setCity);
+  // }, [city]);
 
   useEffect(() => {
     if (geo.lat && geo.lon) {
@@ -39,8 +39,7 @@ export default function WeatherContainer() {
       setWeather({});
     }
   }, [geo]);
+
   console.log('--------->weather', weather);
-  return (
-    <WeatherPresent weathers={weather} city={city} setCity={setCity} useDebounce={useDebounce} />
-  );
+  return <WeatherPresent weathers={weather} geo={geo} setGeo={setGeo} useDebounce={useDebounce} />;
 }
