@@ -3,12 +3,20 @@ import './weather.css';
 // import Select from 'react-select';
 import { getDataCity } from '../../api/weatherApi';
 import AsyncSelect from 'react-select/async';
+import { TbCloudSearch } from 'react-icons/tb';
 
-export default function City({ geo, setGeo, useDebounce }) {
-  const [editing, setEditing] = useState(false);
-  // const [inputCity, setInputCity] = useState('');
-  const [dataCity, setDataCity] = useState([]);
-  const [nameCity, setNameCity] = useState('');
+export default function City({
+  setGeo,
+  nameCity,
+  setNameCity,
+  dataCity,
+  setDataCity,
+  setIsSelectCity,
+  setIndexCity,
+}) {
+  // const [editing, setEditing] = useState(false);
+  const [inputCity, setInputCity] = useState('');
+  // const [dataCity, setDataCity] = useState([]);
   const [optionsCity, setOptionsCity] = useState([]);
   console.log('--------->OptionsCity', optionsCity);
 
@@ -19,13 +27,13 @@ export default function City({ geo, setGeo, useDebounce }) {
   // const debouncedSearchTerm = useDebounce(inputCity, 8);
   // console.log('--------->debouncedSearchTerm', debouncedSearchTerm);
 
-  const handleClick = () => {
-    setEditing(true);
-  };
+  // const handleClick = () => {
+  //   setEditing(true);
+  // };
 
-  const handleBlur = () => {
-    setEditing(false);
-  };
+  // const handleBlur = () => {
+  //   setEditing(false);
+  // };
 
   // const handleInputChange = (inputCity) => {
   //   console.log('--------->inhandleonInputChangeinputCity', inputCity);
@@ -42,6 +50,9 @@ export default function City({ geo, setGeo, useDebounce }) {
     console.log('indexCity', indexCity);
     console.log('--------->inhandlechangedataCity', dataCity);
     console.log('dataCityin geo', dataCity[indexCity.value]);
+    setIndexCity(indexCity.value);
+    setIsSelectCity(true);
+    setNameCity(inputCity);
     setGeo({
       lat: dataCity[indexCity.value].lat,
       lon: dataCity[indexCity.value].lon,
@@ -65,11 +76,17 @@ export default function City({ geo, setGeo, useDebounce }) {
   let timerId;
 
   const promiseOptions = (inputValue) => {
+    // console.log('!!!!!>isSelectCity', isSelectCity);
+    // if (isSelectCity) {
+    //   console.log('!!!!!!!!>isSelectCityin if pronise', isSelectCity);
+    //   setPrevCity(nameCity);
+    // }
+    setIsSelectCity(false);
     return new Promise((resolve, reject) => {
       clearTimeout(timerId);
       timerId = setTimeout(async () => {
         try {
-          setNameCity(inputValue);
+          setInputCity(inputValue);
           const results = await getDataCity(inputValue, setDataCity, setOptionsCity);
           resolve(results);
         } catch (error) {
@@ -92,11 +109,19 @@ export default function City({ geo, setGeo, useDebounce }) {
   //   }, 1000);
   // });
   // };
+
+  const customIcon = (props) => (
+    <div>
+      <TbCloudSearch color="white" />
+    </div>
+  );
+
   return (
     <div className="city">
-      {editing ? (
+      {/* {editing ? (
         <AsyncSelect
-          autoFocus
+          classNamePrefix="custom-select-weather"
+          // autoFocus
           // ref={inputRef}
           // type="text"
           onChange={handleChange}
@@ -108,9 +133,23 @@ export default function City({ geo, setGeo, useDebounce }) {
         />
       ) : (
         <div onClick={handleClick} className="name-city">
-          {nameCity !== '' ? nameCity : 'введите город'}
+          {nameCity !== '' ? nameCity : 'введите город'} <TbCloudSearch color="white" />
         </div>
-      )}
+      )} */}
+      <AsyncSelect
+        classNamePrefix="custom-select-weather"
+        // autoFocus
+        // ref={inputRef}
+        // type="text"
+        onChange={handleChange}
+        components={{ DropdownIndicator: customIcon }}
+        placeholder="Введите название города"
+        // options={optionsCity}
+        // onInputChange={handleInputChange}
+        // onBlur={handleBlur}
+        loadOptions={promiseOptions}
+        value={nameCity}
+      />
     </div>
   );
 }

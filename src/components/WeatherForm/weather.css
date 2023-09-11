@@ -2,44 +2,79 @@
   display: grid;
   min-width: 100vw;
   min-height: 100vh;
-  background-color: #024c68;
+  background-color: #293251;
   row-gap: 0px;
   grid-template-areas:
     'City'
     'temp-data'
     'details';
   grid-template-columns: 100%;
+  grid-template-rows: fit-content(250px);
+}
+
+.custom-select-weather__control {
+  position: relative !important;
+  -webkit-transition: all 100ms !important;
+  transition: all 100ms !important;
+  background-color: #293251 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.custom-select-weather__menu {
+  position: relative !important;
+  -webkit-transition: all 100ms !important;
+  transition: all 100ms !important;
+  background-color: #293251 !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #f3f9ff !important;
+}
+
+.custom-select-weather__input {
+  color: #f3f9ff !important;
+}
+
+.custom-select-weather__option {
+  cursor: pointer !important;
+  background-color: #384266 !important;
+  color: #9cc0e0 !important;
+  &--is-focused {
+    background-color: #83c6fa !important;
+    color: #9cc0e0 !important;
+  }
+}
+.custom-select-weather__option:hover {
+  background-color: #83c6fa !important;
+  color: #293251 !important;
 }
 
 .city {
   grid-area: City;
-  color: #62b1d0;
-  padding-left: 5em;
-  padding-right: 5em;
-  padding-top: 50em;
 }
 .name-city {
-  color: #62b1d0;
-  background-color: #0776a0;
-  border-radius: 10px;
-  transition: background-color 0.3s;
+  color: #f3f9ff;
+  /* transition: background-color 0.3s;
   grid-row: 1;
   max-width: 10em;
   max-height: 10em;
   padding-left: 5em;
   padding-right: 5em;
-  align-items: end;
+  align-items: end; */
 }
-.name-city:hover {
-  background-color: #2f8fb3;
-  color: #1b4453;
-}
-temperature-date {
+/* .name-city:hover {
+  background-color: #384266;
+  color: #9cc0e0;
+} */
+.temperature-date {
   grid-area: temp-data;
   display: grid;
-  grid-template-areas:
+  justify-items: center;
+  align-items: stretch;
+  color: #f3f9ff;
+
+  /* grid-template-areas:
     'C K'
-    'C F';
+    'C F'; */
 }
 .temperature {
   color: #62b1d0;
@@ -53,6 +88,9 @@ temperature-date {
   background-color: bisque;
   overflow-x: scroll;
   white-space: nowrap;
+}
+.feels-like {
+  color: #b0c4dd;
 }
 
 .not-found-city {

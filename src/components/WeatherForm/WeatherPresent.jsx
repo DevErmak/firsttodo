@@ -22,9 +22,29 @@ export default function Weather({ weathers, geo, setGeo, useDebounce }) {
   //     </>
   //   );
   // }
-  return (
-    <>
-      <Swiper className="mySwiper">
+  const [nameCity, setNameCity] = useState('');
+  const [dataCity, setDataCity] = useState([]);
+  const [isSelectCity, setIsSelectCity] = useState(false);
+  const [indexCity, setIndexCity] = useState();
+
+  console.log('!!!---->weathers', weathers);
+
+  if (!isSelectCity) {
+    return (
+      <City
+        setGeo={setGeo}
+        nameCity={nameCity}
+        setNameCity={setNameCity}
+        dataCity={dataCity}
+        setDataCity={setDataCity}
+        setIsSelectCity={setIsSelectCity}
+        setIndexCity={setIndexCity}
+      />
+    );
+  } else {
+    return (
+      <>
+        {/* <Swiper className="mySwiper">
         <SwiperSlide>Slide 1</SwiperSlide>
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
@@ -34,10 +54,23 @@ export default function Weather({ weathers, geo, setGeo, useDebounce }) {
         <SwiperSlide>Slide 7</SwiperSlide>
         <SwiperSlide>Slide 8</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
-      </Swiper>
-      {/* <City geo={geo} useDebounce={useDebounce} setGeo={setGeo} /> */}
-
-      {/* <div className="temperature-date">
+      </Swiper> */}
+        <City
+          setGeo={setGeo}
+          nameCity={nameCity}
+          setNameCity={setNameCity}
+          dataCity={dataCity}
+          setDataCity={setDataCity}
+          setIsSelectCity={setIsSelectCity}
+          setIndexCity={setIndexCity}
+        />
+        <DateWeather
+          weathers={weathers}
+          nameCity={nameCity}
+          dataCity={dataCity}
+          indexCity={indexCity}
+        />
+        {/* <div className="temperature-date">
         <Temperature weathers={weathers.list} index={index} setIndex={setIndex} />
         <DateWeather
           weathers={weathers.list}
@@ -47,7 +80,8 @@ export default function Weather({ weathers, geo, setGeo, useDebounce }) {
         />
         {console.log('--------->weathers.list[index]', weathers.list[index])}
       </div> */}
-      {/* <WeatherDetails weather={weathers.list[index]} /> */}
-    </>
-  );
+        {/* <WeatherDetails weather={weathers.list[index]} /> */}
+      </>
+    );
+  }
 }

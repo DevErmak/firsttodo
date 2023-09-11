@@ -6,9 +6,9 @@ import { useState } from 'react';
 import Home from './pages/Home';
 
 const AppRouter = () => {
-  const [weather, setWeather] = useState({});
+  const [weathers, setWeathers] = useState({});
   return (
-    <WeatherContext.Provider value={{ weather, setWeather }}>
+    <WeatherContext.Provider value={{ weathers, setWeathers }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
