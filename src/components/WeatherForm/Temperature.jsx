@@ -1,56 +1,51 @@
 import { useEffect, useRef, useState } from 'react';
 import './weather.css';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Pagination } from 'swiper/modules';
+import 'swiper/css';
 
-export default function Temperature({ weathers, setIndex, index }) {
-  const scrollContainerRef = useRef(null);
+export default function Temperature() {
+  // { weathers, setIndex, index }
+  // const scrollContainerRef = useRef(null);
 
-  useEffect(() => {
-    const handleScroll = (event) => {
-      console.log('Прокрутка элемента div произошла!');
+  // useEffect(() => {
+  //   const handleScroll = (event) => {
+  //     console.log('Прокрутка элемента div произошла!');
 
-      if (event.deltaX > 0 && index < weathers.length - 1) {
-        console.log('--------->up');
-        setIndex((prevIndex) => {
-          const currentDate = new Date(weathers[prevIndex].dt * 1000);
-          if (currentDate.getHours() === 21) {
-            return prevIndex;
-          } else return prevIndex + 1;
-        });
-      } else if (event.deltaX < 0 && index > 0) {
-        setIndex((prevIndex) => {
-          const currentDate = new Date(weathers[prevIndex].dt * 1000);
-          if (currentDate.getHours() === 0) {
-            return prevIndex;
-          } else return prevIndex - 1;
-        });
-      }
-    };
-    const scrollContainer = scrollContainerRef.current;
+  //     if (event.deltaX > 0 && index < weathers.length - 1) {
+  //       console.log('--------->up');
+  //       setIndex((prevIndex) => {
+  //         const currentDate = new Date(weathers[prevIndex].dt * 1000);
+  //         if (currentDate.getHours() === 21) {
+  //           return prevIndex;
+  //         } else return prevIndex + 1;
+  //       });
+  //     } else if (event.deltaX < 0 && index > 0) {
+  //       setIndex((prevIndex) => {
+  //         const currentDate = new Date(weathers[prevIndex].dt * 1000);
+  //         if (currentDate.getHours() === 0) {
+  //           return prevIndex;
+  //         } else return prevIndex - 1;
+  //       });
+  //     }
+  //   };
+  //   const scrollContainer = scrollContainerRef.current;
 
-    scrollContainer.addEventListener('scroll', handleScroll);
+  //   scrollContainer.addEventListener('scroll', handleScroll);
 
-    return () => {
-      scrollContainer.removeEventListener('scroll', handleScroll);
-    };
-  }, [index, weathers.length]);
-
+  //   return () => {
+  //     scrollContainer.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [index, weathers.length]);
+  let x = [4, 5, 6, 7];
   return (
     <>
-      <Swiper
-        direction={'vertical'}
-        slidesPerView={1}
-        spaceBetween={30}
-        mousewheel={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Mousewheel, Pagination]}
-        className="mySwiper"
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
+      <Swiper watchSlidesProgress={true} slidesPerView={3} className="mySwiper">
+        {x.map((i) => (
+          <SwiperSlide>
+            <div className="awdasd">Slide {i}</div>
+          </SwiperSlide>
+        ))}
+        {/* <SwiperSlide>Slide 1</SwiperSlide>
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>
@@ -58,8 +53,9 @@ export default function Temperature({ weathers, setIndex, index }) {
         <SwiperSlide>Slide 6</SwiperSlide>
         <SwiperSlide>Slide 7</SwiperSlide>
         <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide> */}
       </Swiper>
+
       {/* <div className="temperature">
         <div
           ref={scrollContainerRef}

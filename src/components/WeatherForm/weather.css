@@ -66,16 +66,42 @@
   color: #9cc0e0;
 } */
 .temperature-date {
-  grid-area: temp-data;
   display: grid;
   justify-items: center;
-  align-items: stretch;
+  align-items: center;
   color: #f3f9ff;
-
-  /* grid-template-areas:
-    'C K'
-    'C F'; */
+  /* grid-template-columns: 120px 120px; */
+  grid-template-areas:
+    'CW D'
+    'CW T';
 }
+.current-weather {
+  grid-area: CW;
+}
+.forecast-date {
+  grid-area: D;
+  width: 100%;
+  height: 580px;
+  /* max-height: 580px; */
+}
+
+.forecast-temperature {
+  max-width: 50vw;
+  grid-area: T;
+}
+/* .forecast-date > .swiper-slide {
+  background: #384266 !important;
+  color: #95b5de;
+}
+.forecast-temperature > .swiper-slide {
+  background: #384266 !important;
+  color: #95b5de; */
+/* } */
+
+.awdasd {
+  color: #26a1aa;
+}
+
 .temperature {
   color: #62b1d0;
   display: grid;
