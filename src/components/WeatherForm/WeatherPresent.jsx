@@ -1,6 +1,5 @@
 // import './weather.css';
 import WeatherDetails from './WeatherDetails';
-import Temperature from './Temperature';
 import DateWeather from './DateWeather';
 import { useState } from 'react';
 import City from './City';
@@ -56,6 +55,7 @@ export default function Weather({ weathers, geo, setGeo, useDebounce }) {
             dataCity={dataCity}
             indexCity={indexCity}
           />
+          {/* <div className="weather-details">asd</div> */}
           {/* <div className="temperature-date">
         <Temperature weathers={weathers.list} index={index} setIndex={setIndex} />
         <DateWeather

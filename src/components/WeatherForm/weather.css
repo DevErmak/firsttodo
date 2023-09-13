@@ -3,13 +3,121 @@
   min-width: 100vw;
   min-height: 100vh;
   background-color: #293251;
-  row-gap: 0px;
+  /* row-gap: 0px; */
   grid-template-areas:
     'City'
     'temp-data'
     'details';
   grid-template-columns: 100%;
-  grid-template-rows: fit-content(250px);
+  grid-template-rows: 10vh 1fr 1fr;
+}
+
+.city {
+  grid-area: City;
+}
+
+.name-city {
+  color: #f3f9ff;
+}
+
+/* .not-found-city {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(94, 45, 45);
+  background-color: rgb(216, 103, 75);
+} */
+
+/* @media screen and (max-width: 480px) {
+  .name-city {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+} */
+
+.temperature-date {
+  grid-area: 'temp-data';
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 50vw 50vw;
+  /* min-width: 20%;
+  min-height: 20%; */
+  /* grid-template-areas:
+    'CW D'
+    'CW T'; */
+}
+.current-weather {
+  grid-column: 1;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 2vh;
+  /* grid-area: CW; */
+}
+.current-temp {
+  color: #f3f9ff;
+}
+.feels-like {
+  color: #b0c4dd;
+}
+
+.forecast-weathers {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  /* align-self: stretch;
+  justify-self: stretch; */
+  /* min-width: 20%;
+  min-height: 20%; */
+  /* max-width: 100%;
+  max-height: 250px; */
+}
+.forecast-nameday {
+  /* width: 5em; */
+  color: #83c6fa;
+  background-color: #384266;
+}
+.data-temp {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin-top: 3em;
+}
+.swiper {
+  width: 40vw;
+  height: 20vh;
+}
+.swiper-slide {
+  color: #83c6fa;
+  background: #384266;
+  line-height: 1em;
+  text-align: center;
+}
+
+.weather-details {
+  grid-area: details;
+  cursor: pointer;
+  color: #62b1d0;
+  transition: color 0.3s;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row: 3;
+  gap: 10px;
+}
+.weather-details:hover > div {
+  color: #26a1aa;
+}
+.read-or-hide-details {
+  cursor: pointer;
+  color: #62b1d0;
+  max-width: 100em;
+  max-height: 100em;
+  grid-row: 3;
+  transition: color 0.3s;
+}
+.read-or-hide-details:hover {
+  color: #26a1aa;
 }
 
 .custom-select-weather__control {
@@ -48,47 +156,22 @@
   color: #293251 !important;
 }
 
-.city {
-  grid-area: City;
-}
-.name-city {
-  color: #f3f9ff;
-  /* transition: background-color 0.3s;
-  grid-row: 1;
-  max-width: 10em;
-  max-height: 10em;
-  padding-left: 5em;
-  padding-right: 5em;
-  align-items: end; */
-}
 /* .name-city:hover {
   background-color: #384266;
   color: #9cc0e0;
 } */
-.temperature-date {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  color: #f3f9ff;
-  /* grid-template-columns: 120px 120px; */
-  grid-template-areas:
-    'CW D'
-    'CW T';
-}
-.current-weather {
-  grid-area: CW;
-}
-.forecast-date {
+
+/* .forecast-weathers {
   grid-area: D;
   width: 100%;
   height: 580px;
   /* max-height: 580px; */
-}
+/* } */
 
-.forecast-temperature {
+/* .forecast-temperature {
   max-width: 50vw;
   grid-area: T;
-}
+} */
 /* .forecast-date > .swiper-slide {
   background: #384266 !important;
   color: #95b5de;
@@ -98,11 +181,7 @@
   color: #95b5de; */
 /* } */
 
-.awdasd {
-  color: #26a1aa;
-}
-
-.temperature {
+/* .temperature {
   color: #62b1d0;
   display: grid;
   grid-row: 2;
@@ -114,58 +193,15 @@
   background-color: bisque;
   overflow-x: scroll;
   white-space: nowrap;
-}
-.feels-like {
-  color: #b0c4dd;
-}
+} */
 
-.not-found-city {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(94, 45, 45);
-  background-color: rgb(216, 103, 75);
-}
-
-@media screen and (max-width: 480px) {
-  .name-city {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-}
-
-.read-or-hide-details {
-  cursor: pointer;
-  color: #62b1d0;
-  max-width: 100em;
-  max-height: 100em;
-  grid-row: 3;
-  transition: color 0.3s;
-}
-.read-or-hide-details:hover {
-  color: #26a1aa;
-}
-.weather-details {
-  grid-area: details;
-  cursor: pointer;
-  color: #62b1d0;
-  transition: color 0.3s;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-row: 3;
-  gap: 10px;
-}
-.weather-details:hover > div {
-  color: #26a1aa;
-}
-
-.swiper {
+/* .swiper {
   width: 100%;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
 }
-
+/*
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -173,7 +209,7 @@
   height: calc((100% - 30px) / 2) !important;
 
   /* Center slide text vertically */
-  display: flex;
+/* display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
