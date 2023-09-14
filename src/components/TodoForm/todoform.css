@@ -5,3 +5,13 @@
 
   background-color: #eeeeba;
 }
+
+.widget {
+  display: grid;
+  grid-template-columns: 250px;
+  grid-template-rows: 250px;
+}
+/* .weatherform {
+  width: 500vw !important;
+  height: 500vh !important;
+} */

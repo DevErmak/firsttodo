@@ -4,7 +4,7 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import Content from './Content/Content';
 
-export default function TodoForm() {
+export default function TodoForm({ Weather }) {
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
 
   const [inputTask, setInputTask] = useState('');
@@ -50,7 +50,7 @@ export default function TodoForm() {
   };
 
   const findTasks = () => {
-    if (inputTask.trim() === '' || foundTasks === []) {
+    if (inputTask.trim() === '' || Object.keys(foundTasks).length === 0) {
       setIsSearch(false);
     } else {
       setIsSearch(!isSearch);

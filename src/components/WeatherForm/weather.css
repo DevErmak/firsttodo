@@ -20,32 +20,12 @@
   color: #f3f9ff;
 }
 
-/* .not-found-city {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(94, 45, 45);
-  background-color: rgb(216, 103, 75);
-} */
-
-/* @media screen and (max-width: 480px) {
-  .name-city {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-} */
-
 .temperature-date {
   grid-area: 'temp-data';
   display: grid;
   justify-items: center;
   align-items: center;
   grid-template-columns: 50vw 50vw;
-  /* min-width: 20%;
-  min-height: 20%; */
-  /* grid-template-areas:
-    'CW D'
-    'CW T'; */
 }
 .current-weather {
   grid-column: 1;
@@ -66,16 +46,13 @@
   grid-column: 2;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 100%;
-  /* align-self: stretch;
-  justify-self: stretch; */
-  /* min-width: 20%;
-  min-height: 20%; */
-  /* max-width: 100%;
-  max-height: 250px; */
+  grid-template-rows: 5vh 15vh;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 .forecast-nameday {
-  /* width: 5em; */
   color: #83c6fa;
   background-color: #384266;
 }
@@ -84,15 +61,31 @@
   grid-template-rows: 1fr 1fr 1fr;
   margin-top: 3em;
 }
-.swiper {
+
+.my-swiper-date {
   width: 40vw;
-  height: 20vh;
+  height: 5vh;
+  color: #83c6fa;
+  background: #384266;
+  line-height: 1em;
+  text-align: center !important;
+  text-justify: center !important;
 }
-.swiper-slide {
+
+.my-swiper-date > .swiper-wrapper > .swiper-slide {
+  justify-content: center;
+  flex-direction: column;
+  display: flex !important;
+}
+
+.my-swiper-temp {
+  width: 40vw;
+  height: 15vh;
   color: #83c6fa;
   background: #384266;
   line-height: 1em;
   text-align: center;
+  text-justify: center;
 }
 
 .weather-details {
@@ -155,61 +148,3 @@
   background-color: #83c6fa !important;
   color: #293251 !important;
 }
-
-/* .name-city:hover {
-  background-color: #384266;
-  color: #9cc0e0;
-} */
-
-/* .forecast-weathers {
-  grid-area: D;
-  width: 100%;
-  height: 580px;
-  /* max-height: 580px; */
-/* } */
-
-/* .forecast-temperature {
-  max-width: 50vw;
-  grid-area: T;
-} */
-/* .forecast-date > .swiper-slide {
-  background: #384266 !important;
-  color: #95b5de;
-}
-.forecast-temperature > .swiper-slide {
-  background: #384266 !important;
-  color: #95b5de; */
-/* } */
-
-/* .temperature {
-  color: #62b1d0;
-  display: grid;
-  grid-row: 2;
-  justify-items: stretch;
-  align-items: center;
-  white-space: nowrap;
-  max-width: 100em;
-  max-height: 100em;
-  background-color: bisque;
-  overflow-x: scroll;
-  white-space: nowrap;
-} */
-
-/* .swiper {
-  width: 100%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-/*
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  height: calc((100% - 30px) / 2) !important;
-
-  /* Center slide text vertically */
-/* display: flex;
-  justify-content: center;
-  align-items: center;
-} */

@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import './weather.css';
 
 export default function CurrentWeather({ weathers, nameCity, country, date }) {
