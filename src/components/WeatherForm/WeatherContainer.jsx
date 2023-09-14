@@ -19,5 +19,5 @@ export default function WeatherContainer() {
 
   console.log('1234----->weather', weathers.current);
   console.log('12----->weather', weathers.forecast);
-  return <WeatherPresent weathers={weathers} geo={geo} setGeo={setGeo} />;
+  return <WeatherPresent weathers={weathers} setWeathers={setWeathers} geo={geo} setGeo={setGeo} />;
 }

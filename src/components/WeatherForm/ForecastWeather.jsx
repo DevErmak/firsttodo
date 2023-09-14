@@ -1,17 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Mousewheel, Pagination } from 'swiper/modules';
 
-export default function ForecastWeather({ weathersForecast }) {
-  console.log('--------->weathersForecast', weathersForecast);
+export default function ForecastWeather({ weathersForecast, setWeathers, weathers }) {
+  console.log('!!!-------->weathersForecast', weathersForecast);
   let timestampDays = Object.keys(weathersForecast);
   console.log('--------->timestampDay', timestampDays);
   const [activeSlide, setActiveSlide] = useState(0);
   const handleFirstSwiperSlideChange = (swiper) => {
     setActiveSlide(swiper.realIndex);
   };
+  useEffect(() => {
+    setWeathers({ ...weathers, widgetforecast: weathersForecast });
+  }, [weathers]);
+  console.log('1------>weathers', weathers);
+
   return (
     <div className="forecast-weathers">
       <Swiper

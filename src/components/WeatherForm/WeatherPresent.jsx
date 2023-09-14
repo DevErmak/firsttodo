@@ -4,7 +4,7 @@ import DateWeather from './DateWeather';
 import { useState } from 'react';
 import City from './City';
 
-export default function Weather({ weathers, geo, setGeo, useDebounce }) {
+export default function Weather({ weathers, geo, setGeo, useDebounce, setWeathers }) {
   const [nameCity, setNameCity] = useState('');
   const [dataCity, setDataCity] = useState([]);
   const [isSelectCity, setIsSelectCity] = useState(false);
@@ -42,6 +42,7 @@ export default function Weather({ weathers, geo, setGeo, useDebounce }) {
             nameCity={nameCity}
             dataCity={dataCity}
             indexCity={indexCity}
+            setWeathers={setWeathers}
           />
           <div className="weather-details">asd</div>
         </>

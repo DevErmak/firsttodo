@@ -7,7 +7,7 @@ import { getTimezoneOffset, utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 import CurrentWeather from './CurrentWeather';
 import ForecastWeather from './ForecastWeather';
 
-export default function DateWeather({ weathers, nameCity, dataCity, indexCity }) {
+export default function DateWeather({ weathers, nameCity, dataCity, indexCity, setWeathers }) {
   const utcDate = utcToZonedTime(new Date(), 'Africa/Dakar');
 
   console.log('--------->utcDate', utcDate);
@@ -68,8 +68,13 @@ export default function DateWeather({ weathers, nameCity, dataCity, indexCity })
         nameCity={nameCity}
         country={dataCity[indexCity].country}
         date={date}
+        setWeathers={setWeathers}
       />
-      <ForecastWeather weathersForecast={weathersForecast} />
+      <ForecastWeather
+        weathersForecast={weathersForecast}
+        setWeathers={setWeathers}
+        weathers={weathers}
+      />
     </div>
   );
 }
