@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import './weather.css';
 import { ru } from 'date-fns/locale';
 import { add, addMilliseconds, format, getMinutes } from 'date-fns';
@@ -6,14 +6,16 @@ import { getTimezoneOffset, utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 
 import CurrentWeather from './CurrentWeather';
 import ForecastWeather from './ForecastWeather';
+import { WeatherContext } from '../../context/WeatherContext';
 
-export default function DateWeather({ weathers, nameCity, dataCity, indexCity, setWeathers }) {
+export default function DateWeather({ nameCity, dataCity, indexCity }) {
+  const { weathers, setWeathers } = useContext(WeatherContext);
   const utcDate = utcToZonedTime(new Date(), 'Africa/Dakar');
 
   console.log('--------->utcDate', utcDate);
 
   const dateInCity = add(utcDate, {
-    seconds: weathers.current.timezone,
+    seconds: weathers.siteWeather.current.timezone,
   });
 
   console.log('<<><dateInCity', dateInCity);
@@ -59,22 +61,12 @@ export default function DateWeather({ weathers, nameCity, dataCity, indexCity, s
     });
     return result;
   };
-  const weathersForecast = getWeathersForecast(weathers.forecast.list);
+  const weathersForecast = getWeathersForecast(weathers.siteWeather.forecast.list);
 
   return (
     <div className="temperature-date">
-      <CurrentWeather
-        weathers={weathers}
-        nameCity={nameCity}
-        country={dataCity[indexCity].country}
-        date={date}
-        setWeathers={setWeathers}
-      />
-      <ForecastWeather
-        weathersForecast={weathersForecast}
-        setWeathers={setWeathers}
-        weathers={weathers}
-      />
+      <CurrentWeather nameCity={nameCity} country={dataCity[indexCity].country} date={date} />
+      <ForecastWeather weathersForecast={weathersForecast} />
     </div>
   );
 }

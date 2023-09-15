@@ -1,3 +1,4 @@
+import usePosition from '../../hooks/usePosition';
 import './weather.css';
 import WeatherContainer from './WeatherContainer';
 

@@ -5,7 +5,7 @@ export default function Todo() {
   return (
     <>
       <TodoForm />
-      <WidgetWeather />
+      {/* <WidgetWeather /> */}
     </>
   );
 }

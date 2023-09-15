@@ -1,16 +1,16 @@
 // import './weather.css';
 import WeatherDetails from './WeatherDetails';
 import DateWeather from './DateWeather';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import City from './City';
+import { WeatherContext } from '../../context/WeatherContext';
 
-export default function Weather({ weathers, geo, setGeo, useDebounce, setWeathers }) {
+export default function Weather({ geo, setGeo, useDebounce }) {
   const [nameCity, setNameCity] = useState('');
   const [dataCity, setDataCity] = useState([]);
   const [isSelectCity, setIsSelectCity] = useState(false);
   const [indexCity, setIndexCity] = useState();
-
-  console.log('!!!---->weathers', weathers);
+  const { weathers, setWeathers } = useContext(WeatherContext);
 
   if (!isSelectCity) {
     return (
@@ -25,7 +25,8 @@ export default function Weather({ weathers, geo, setGeo, useDebounce, setWeather
       />
     );
   } else {
-    if (Object.keys(weathers).length !== 0)
+    console.log('!!!------>weathers', weathers);
+    if (Object.keys(weathers.siteWeather).length !== 0)
       return (
         <>
           <City
@@ -37,14 +38,7 @@ export default function Weather({ weathers, geo, setGeo, useDebounce, setWeather
             setIsSelectCity={setIsSelectCity}
             setIndexCity={setIndexCity}
           />
-          <DateWeather
-            weathers={weathers}
-            nameCity={nameCity}
-            dataCity={dataCity}
-            indexCity={indexCity}
-            setWeathers={setWeathers}
-          />
-          <div className="weather-details">asd</div>
+          <DateWeather nameCity={nameCity} dataCity={dataCity} indexCity={indexCity} />
         </>
       );
   }

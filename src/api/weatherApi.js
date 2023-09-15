@@ -63,7 +63,7 @@ export async function getDataCity(inputNameCity, setDataCity, setOptionsCity) {
 //   }
 // }
 
-export async function getWeathers(lat, lon, weathers, setWeathers) {
+export async function getWeathers(lat, lon, dataWeather, setDataWeather) {
   try {
     let response = await instance.get(`data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=40`);
     console.log('--------->responswethere', response);
@@ -73,8 +73,8 @@ export async function getWeathers(lat, lon, weathers, setWeathers) {
     console.log('--------->responswethere', response);
     const dataCurrent = await response.data;
     console.log('-!!!!----->dataweather', dataCurrent);
-    setWeathers({ forecast: dataForecast, current: dataCurrent });
-    console.log('-333----->dataweather', weathers);
+    setDataWeather({ forecast: dataForecast, current: dataCurrent });
+    console.log('-333----->dataweather', dataWeather);
   } catch (error) {
     console.error(error);
   }

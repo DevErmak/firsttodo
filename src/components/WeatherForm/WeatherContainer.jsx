@@ -6,18 +6,25 @@ import { getCurrentWeather, getWeathers } from '../../api/weatherApi';
 export default function WeatherContainer() {
   const { weathers, setWeathers } = useContext(WeatherContext);
 
+  const [dataWeather, setDataWeather] = useState({});
+
   const [geo, setGeo] = useState({});
 
   useEffect(() => {
     if (geo.lat && geo.lon) {
       console.log('--------->geo.lat, geo.lon', geo.lat, geo.lon);
-      getWeathers(geo.lat, geo.lon, weathers, setWeathers);
+      getWeathers(geo.lat, geo.lon, dataWeather, setDataWeather);
     } else {
-      setWeathers({});
+      // setWeathers({ ...weathers, siteWeather: {} });
+      // setWeathers({});
     }
   }, [geo]);
 
-  console.log('1234----->weather', weathers.current);
-  console.log('12----->weather', weathers.forecast);
-  return <WeatherPresent weathers={weathers} setWeathers={setWeathers} geo={geo} setGeo={setGeo} />;
+  console.log('!!---------> dataWeather', dataWeather);
+  useEffect(() => {
+    setWeathers({ ...weathers, siteWeather: dataWeather });
+    console.log('!!weathers', weathers);
+  }, [dataWeather]);
+
+  return <WeatherPresent geo={geo} setGeo={setGeo} />;
 }
