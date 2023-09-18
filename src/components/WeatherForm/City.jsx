@@ -15,14 +15,8 @@ export default function City({
 }) {
   const [inputCity, setInputCity] = useState('');
   const [optionsCity, setOptionsCity] = useState([]);
-  console.log('--------->OptionsCity', optionsCity);
-
-  console.log('--------->datawdasdawfafsaCity', dataCity);
 
   const handleChange = (indexCity) => {
-    console.log('indexCity', indexCity);
-    console.log('--------->inhandlechangedataCity', dataCity);
-    console.log('dataCityin geo', dataCity[indexCity.value]);
     setIndexCity(indexCity.value);
     setIsSelectCity(true);
     setNameCity(inputCity);

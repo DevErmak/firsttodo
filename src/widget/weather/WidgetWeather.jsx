@@ -1,37 +1,64 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { WeatherContext } from '../../context/WeatherContext';
 import usePosition from '../../hooks/usePosition';
 import { getWeathers } from '../../api/weatherApi';
+import './widget-weather.css';
+import { format } from 'date-fns';
+import { ru } from 'date-fns/locale';
+import { BiArrowFromLeft, BiArrowFromRight } from 'react-icons/bi';
+import { GrUpdate } from 'react-icons/gr';
 
 export default function WidgetWeather() {
+  const [isActive, setIsActive] = useState(false);
   const { weathers, setWeathers } = useContext(WeatherContext);
-  console.log('!!!!----->', weathers);
-
   const { coordinates, error } = usePosition();
 
-  if (error) {
-    return <div>Ошибка: {error.message}</div>;
-  }
+  const [dataWeather, setDataWeather] = useState({});
 
-  console.log('--------->latitude', coordinates.latitude, coordinates.longitude, error);
+  useEffect(() => {
+    if (coordinates.latitude && coordinates.longitude) {
+      getWeathers(coordinates.latitude, coordinates.longitude, dataWeather, setDataWeather);
+    } else {
+      setWeathers((prevState) => ({ ...prevState, widgetweather: {} }));
+    }
+  }, [coordinates]);
 
-  // useEffect(() => {
-  //   if (coordinates.lat && coordinates.lon) {
-  //     console.log('--------->coordinates.lat, coordinates.lon', coordinates.lat, coordinates.lon);
-  //     getWeathers(coordinates.latitude, coordinates.longitude, weathers, setWeathers);
-  //   } else {
-  //     setWeathers({...weathers, widgetweather : {}});
-  //   }
-  // }, [coordinates]);
+  const date = format(new Date(), 'EEEEEE kk:mm dd MMM', { locale: ru });
 
-  return (
-    <div>
-      <div>{weathers.widgetcurrent.temp} °C</div>
-      <div>ощущается как: {weathers.widgetcurrent.feels_like} °C</div>
-      <div>
-        {weathers.widgetcurrent.nameCity}, {weathers.widgetcurrent.country}{' '}
-        {weathers.widgetcurrent.date}
+  useEffect(() => {
+    setWeathers((prevState) => ({ ...prevState, widgetweather: dataWeather }));
+  }, [dataWeather]);
+
+  const handleToggleActive = () => {
+    setIsActive(!isActive);
+  };
+
+  const handleUpdateWeather = () => {
+    setWeathers((prevState) => ({ ...prevState, widgetweather: dataWeather }));
+  };
+
+  if (Object.keys(weathers).length !== 0 && Object.keys(weathers.widgetweather).length !== 0) {
+    const temp = (weathers.widgetweather.current.main.temp - 273.15).toFixed(2);
+    const feels_like = (weathers.widgetweather.current.main.feels_like - 273.15).toFixed(2);
+    return (
+      <div className="widget-weather">
+        <div className={isActive ? 'arrow' : 'arrow-ancillary'} onClick={handleToggleActive}>
+          <BiArrowFromLeft size={25} color="blue" />
+        </div>
+        <div className={isActive ? 'data-widget-weather' : 'data-widget-weather-ancillary'}>
+          <div className="widget-temp">
+            {temp} °C
+            <div onClick={handleUpdateWeather}>
+              <GrUpdate color="blue" />
+            </div>
+          </div>
+          <div className="widget-feels_like">ощущается как: {feels_like} °C</div>
+          <div>
+            {weathers.widgetweather.current.name}, {weathers.widgetweather.current.sys.country}{' '}
+            {date}
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

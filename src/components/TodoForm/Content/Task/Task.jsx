@@ -22,4 +22,3 @@ export default function Task({ task, changeTodo, removeOneTask }) {
     </div>
   );
 }
-// <div className='taskTitle'>{task.title}</div>

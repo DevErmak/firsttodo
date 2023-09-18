@@ -1,5 +1,4 @@
-// import './weather.css';
-import WeatherDetails from './WeatherDetails';
+import './weather.css';
 import DateWeather from './DateWeather';
 import { useContext, useState } from 'react';
 import City from './City';
@@ -25,7 +24,6 @@ export default function Weather({ geo, setGeo, useDebounce }) {
       />
     );
   } else {
-    console.log('!!!------>weathers', weathers);
     if (Object.keys(weathers.siteWeather).length !== 0)
       return (
         <>

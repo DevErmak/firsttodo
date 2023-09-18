@@ -26,42 +26,10 @@ export async function getDataCity(inputNameCity, setDataCity, setOptionsCity) {
         label: item.country,
       }));
     }
-    // if (Object.keys(data).length > 0) {
-    //   console.log('--->inIfdataindataCity', data);
-    //   const options = data.map((item, i) => ({
-    //     value: i,
-    //     label: item.country,
-    //   }));
-
-    //
-    //   setOptionsCity(options);
-    // } else {
-    //   setDataCity([]);
-    //   setOptionsCity([]);
-    // }
   } catch (error) {
     console.error(error);
   }
 }
-
-// export async function getGeo(nameCity, setGeo) {
-//   try {
-//     const response = await instance.get(`/geo/1.0/direct?q=${nameCity}&limit=5`);
-//     console.log('--------->response', response);
-//     const data = await response.data;
-//     console.log('--->ingeodata', data);
-//     if (data.length === 0) {
-//       setGeo({});
-//     } else {
-//       setGeo({
-//         lat: data[0].lat,
-//         lon: data[0].lon,
-//       });
-//     }
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
 
 export async function getWeathers(lat, lon, dataWeather, setDataWeather) {
   try {

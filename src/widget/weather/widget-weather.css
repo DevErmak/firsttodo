@@ -1,0 +1,60 @@
+.widget-weather {
+  background-color: #9df346;
+  color: #333333;
+  text-align: center;
+  border-radius: 50% 20% / 10% 40%;
+  position: fixed;
+  bottom: 5vh;
+  right: 0px;
+  pointer-events: all;
+  display: grid;
+  grid-template-columns: auto auto;
+  min-height: 10vh;
+  align-items: center;
+  justify-items: center;
+}
+.widget-feels_like {
+  color: #449944;
+}
+
+#portal {
+  min-width: 0px;
+  min-height: 0px;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.arrow {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  /* transition:
+    margin-left 1s 0,
+    5s ease-in-out; */
+}
+
+.arrow-ancillary {
+  grid-column-start: 1;
+  grid-column-end: 2;
+
+  transform: rotate(180deg);
+}
+.data-widget-weather {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-top: 10px;
+  margin-right: 0px;
+  transition: margin-right 0s 0.3s;
+}
+.data-widget-weather-ancillary {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-top: 10px;
+  margin-right: -250px;
+  transition: margin-right 0s 0.3s;
+}

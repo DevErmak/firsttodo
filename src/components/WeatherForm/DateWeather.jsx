@@ -12,13 +12,9 @@ export default function DateWeather({ nameCity, dataCity, indexCity }) {
   const { weathers, setWeathers } = useContext(WeatherContext);
   const utcDate = utcToZonedTime(new Date(), 'Africa/Dakar');
 
-  console.log('--------->utcDate', utcDate);
-
   const dateInCity = add(utcDate, {
     seconds: weathers.siteWeather.current.timezone,
   });
-
-  console.log('<<><dateInCity', dateInCity);
 
   const date = format(dateInCity, 'EEEEEE kk:mm dd MMM', { locale: ru });
 
@@ -28,7 +24,6 @@ export default function DateWeather({ nameCity, dataCity, indexCity }) {
     let temp = [];
     let feels_like = [];
     let timestamp = [];
-    console.log('--------->weathers[0].dt', weathers[0].dt);
     let day = format(weathers[0].dt * 1000, 'EEEE dd MMM', { locale: ru });
     let objDayTemp = {};
     let dt = new Date();
@@ -44,7 +39,6 @@ export default function DateWeather({ nameCity, dataCity, indexCity }) {
           timestamp: timestamp,
         };
         result[timestampDay] = objDayTemp;
-        console.log('--------->result', result);
         temp = [];
         temp.push(weather.main.temp);
         feels_like = [];

@@ -21,8 +21,8 @@ export default function ForecastWeather({ weathersForecast }) {
         className="my-swiper-date"
         onSlideChange={handleFirstSwiperSlideChange}
       >
-        {timestampDays.map((timestampDay) => (
-          <SwiperSlide key={timestampDay.id}>{weathersForecast[timestampDay].nameDay}</SwiperSlide>
+        {timestampDays.map((timestampDay, i) => (
+          <SwiperSlide key={i}>{weathersForecast[timestampDay].nameDay}</SwiperSlide>
         ))}
       </Swiper>
       <Swiper
@@ -33,7 +33,7 @@ export default function ForecastWeather({ weathersForecast }) {
         className="my-swiper-temp"
       >
         {weathersForecast[timestampDays[activeSlide]].temp.map((temp, i) => (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <div className="data-temp">
               <div>{weathersForecast[timestampDays[activeSlide]].timestamp[i]}</div>
               <div className="forecast-temp">{(temp - 273.15).toFixed(2)}°C</div>

@@ -6,8 +6,8 @@
   /* row-gap: 0px; */
   grid-template-areas:
     'City'
-    'temp-data'
-    'details';
+    'temp-data';
+  /* 'details'; */
   grid-template-columns: 100%;
   grid-template-rows: 10vh 1fr 1fr;
 }
