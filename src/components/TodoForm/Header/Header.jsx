@@ -18,21 +18,27 @@ export default function Header({
 }) {
   return (
     <div className="header">
-      {isDuplicate && (
-        <label className="label-input-task" htmlFor="error-input-task">
-          такая задача уже есть
-        </label>
-      )}
+      <div className="btn-home">
+        <Link to="/">
+          <button className="btn-home">Домашняя страница</button>
+        </Link>
+      </div>
 
-      <input
-        className={isDuplicate ? 'error-input-task' : 'input-task'}
-        value={inputTask}
-        type="text"
-        onKeyUpCapture={(e) => addTaskEnter(e)}
-        placeholder="введите задачу"
-        onChange={(e) => setInputTask(e.target.value)}
-      ></input>
-
+      <div className="div-input-task">
+        <input
+          className={isDuplicate ? 'error-input-task' : 'input-task'}
+          value={inputTask}
+          type="text"
+          onKeyUpCapture={(e) => addTaskEnter(e)}
+          placeholder="введите задачу"
+          onChange={(e) => setInputTask(e.target.value)}
+        ></input>
+        {isDuplicate && (
+          <label className="label-input-task" htmlFor="error-input-task">
+            такая задача уже есть
+          </label>
+        )}
+      </div>
       <button className="btn-addtask" onClick={() => addTask()}>
         Записать
       </button>
@@ -57,9 +63,6 @@ export default function Header({
           удалить группу элементов
         </button>
       ) : null}
-      <Link to="/">
-        <button className="btn-addtask">Домашняя страница</button>
-      </Link>
     </div>
   );
 }

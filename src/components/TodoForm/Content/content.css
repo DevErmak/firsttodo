@@ -1,9 +1,9 @@
 .content {
-  margin: 50px;
-  grid-row: 2;
-  min-height: 1fr;
-  display: grid;
-  align-items: start;
-  align-content: start;
-  justify-content: center;
+  margin: 80px;
+  justify-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-items: center;
+  width: 25vw;
 }

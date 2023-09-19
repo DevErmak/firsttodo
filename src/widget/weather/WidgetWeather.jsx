@@ -42,10 +42,10 @@ export default function WidgetWeather() {
     const feels_like = (weathers.widgetweather.current.main.feels_like - 273.15).toFixed(2);
     return (
       <div className="widget-weather">
-        <div className={isActive ? 'arrow' : 'arrow-ancillary'} onClick={handleToggleActive}>
+        <div className={isActive ? 'arrow' : 'arrow-expanded'} onClick={handleToggleActive}>
           <BiArrowFromLeft size={25} color="blue" />
         </div>
-        <div className={isActive ? 'data-widget-weather' : 'data-widget-weather-ancillary'}>
+        <div className={isActive ? 'data-widget-weather' : 'data-widget-weather-expanded'}>
           <div className="widget-temp">
             {temp} °C
             <div onClick={handleUpdateWeather}>

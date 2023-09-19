@@ -1,10 +1,29 @@
 .task {
+  flex-basis: 100%;
+  display: flex;
+}
+.task-check {
+  flex: 1;
 }
 
 .taskTitle {
-  margin-left: 10px;
+  flex: 1;
+  display: flex;
+}
+
+.text-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  align-self: center;
+}
+
+.fixed-size {
+  flex: 0 0 20vw;
 }
 
 .close {
-  margin-left: 10px;
+  flex: 0 0 3vw;
 }

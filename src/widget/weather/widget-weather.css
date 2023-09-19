@@ -33,28 +33,26 @@
 .arrow {
   grid-column-start: 1;
   grid-column-end: 2;
-  /* transition:
-    margin-left 1s 0,
-    5s ease-in-out; */
+  transition: transform 0.5s;
 }
 
-.arrow-ancillary {
+.arrow-expanded {
   grid-column-start: 1;
   grid-column-end: 2;
-
   transform: rotate(180deg);
+  transition: transform 0.5s;
 }
 .data-widget-weather {
   grid-column-start: 2;
   grid-column-end: 3;
   margin-top: 10px;
   margin-right: 0px;
-  transition: margin-right 0s 0.3s;
+  transition: margin-right 0.5s;
 }
-.data-widget-weather-ancillary {
+.data-widget-weather-expanded {
   grid-column-start: 2;
   grid-column-end: 3;
   margin-top: 10px;
   margin-right: -250px;
-  transition: margin-right 0s 0.3s;
+  transition: margin-right 0.5s;
 }
