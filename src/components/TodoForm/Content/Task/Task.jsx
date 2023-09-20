@@ -1,7 +1,27 @@
+import { useEffect, useRef, useState } from 'react';
 import './task.css';
 import { PiTrash } from 'react-icons/pi';
+import DotTitle from './DotTitle';
 
 export default function Task({ task, changeTodo, removeOneTask }) {
+  const [isBigText, setIsBigText] = useState(true);
+  const [isActiveFullText, setIsActiveFullText] = useState(true);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    if (titleRef.current) {
+      console.log('--------->titleRef.current.scrollHeight', titleRef.current.scrollHeight);
+      console.log('--------->titleRef.current.clientHeight', titleRef.current.clientHeight);
+      if (titleRef.current.scrollHeight > titleRef.current.clientHeight) {
+        setIsBigText(true);
+      } else {
+        setIsBigText(false);
+        console.log('1-------->isBigText', isBigText);
+      }
+    }
+    console.log('--------->isBigText', isBigText);
+  }, [titleRef]);
+
   return (
     <div className="task">
       <input
@@ -10,20 +30,20 @@ export default function Task({ task, changeTodo, removeOneTask }) {
         checked={task.isCompleted}
         onChange={() => changeTodo(task.id)}
       />
-      <div class="taskTitle fixed-size">
+      <div className="taskTitle fixed-size">
         <label
-          className="text-wrapper"
+          ref={titleRef}
+          className={isBigText ? (isActiveFullText ? 'text-wrapper' : 'full-text') : 'text'}
           htmlFor={task.id}
           style={{ textDecoration: task.isCompleted ? 'line-through' : null }}
         >
           {task.title}
-          {/* <div className="">...</div>
-          <div className="">
-            Длинный текст, который не помещается в две строки, но будет отображаться и скрываться
-            при раскрытии и закрытии аккордеона.
-          </div> */}
         </label>
-        {/* <div className="">...</div> */}
+        <DotTitle
+          isBigText={isBigText}
+          isActiveFullText={isActiveFullText}
+          setIsActiveFullText={setIsActiveFullText}
+        />
       </div>
       <div className="close" onClick={() => removeOneTask(task.id)}>
         <PiTrash color="black" size={25} />

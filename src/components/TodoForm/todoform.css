@@ -1,17 +1,6 @@
 .todoform {
   display: grid;
-  /* grid-template-rows: 1fr 1fr auto; */
+  grid-template-rows: 1fr 1fr auto;
   margin: 0;
-
   background-color: #71e7a0;
 }
-
-.widget {
-  display: grid;
-  grid-template-columns: 250px;
-  grid-template-rows: 250px;
-}
-/* .weatherform {
-  width: 500vw !important;
-  height: 500vh !important;
-} */
