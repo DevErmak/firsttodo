@@ -1,5 +1,4 @@
 .task {
-  flex-basis: 100%;
   display: flex;
   border-bottom: 1px solid #ffffff4d;
 }
@@ -54,6 +53,8 @@
   hyphens: auto;
   overflow: auto;
 }
+
 .text {
   hyphens: auto;
+  overflow: auto;
 }

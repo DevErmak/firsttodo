@@ -1,8 +1,9 @@
 .footer {
-  grid-row: 3;
+  /* grid-row: 3;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 5vh;
+  height: 80px;
+  grid-area: Footer; */
   background-color: #9ae990;
 }

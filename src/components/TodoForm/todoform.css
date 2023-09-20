@@ -1,6 +1,29 @@
 .todoform {
+  /* min-width: 100%; */
+  /* min-height: 100%; */
+
+  min-height: 100vh;
   display: grid;
-  grid-template-rows: 1fr 1fr auto;
-  margin: 0;
+  grid-template-columns: 1fr;
+  grid-template-rows: calc(100% - 80px) 80px;
+  grid-template-areas:
+    /* 'Header' */
+    'Content'
+    'Footer';
+  /* margin: 0; */
+  /* margin-top: 80px; */
   background-color: #71e7a0;
 }
+
+.content {
+  grid-area: Content;
+  overflow: auto;
+}
+
+/* .header {
+  grid-area: Header;
+} */
+
+/* .footer {
+  grid-area: Footer;
+} */

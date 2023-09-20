@@ -1,9 +1,15 @@
 .content {
-  margin: 80px;
-  justify-self: center;
+  /* margin-bottom: 80px; */
+  /* grid-area: Content; */
+  /* overflow: auto; */
+  /* height: 80vh; */
+  /* justify-self: center; */
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-items: center;
-  width: 25vw;
+
+  /* justify-content: center;
+  width: 25vw; */
 }
